@@ -1,0 +1,63 @@
+<section class="skills-hero section">
+  <div class="container">
+    <h1 class="section-title">Skills & Expertise</h1>
+    <p class="section-subtitle">Technologies and tools I work with</p>
+  </div>
+</section>
+
+<section class="technical-skills section">
+  <div class="container">
+    <div class="skills-grid">
+      @for (category of skillCategories; track category.title) {
+        <div class="skill-category card">
+          <div class="category-header">
+            <mat-icon>{{ category.icon }}</mat-icon>
+            <h3>{{ category.title }}</h3>
+          </div>
+          <div class="skills-list">
+            @for (skill of category.skills; track skill.name) {
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">{{ skill.name }}</span>
+                  <span class="skill-level">{{ skill.level }}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" [style.width.%]="skill.level"></div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="soft-skills section">
+  <div class="container">
+    <h2 class="section-title">Soft Skills</h2>
+    <p class="section-subtitle">Beyond technical expertise</p>
+
+    <div class="soft-skills-grid">
+      @for (skill of softSkills; track skill.label) {
+        <div class="soft-skill-item card">
+          <mat-icon>{{ skill.icon }}</mat-icon>
+          <span>{{ skill.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="tools-section section">
+  <div class="container">
+    <h2 class="section-title">Tools I Use</h2>
+    <p class="section-subtitle">My everyday toolkit</p>
+
+    <div class="tools-cloud">
+      @for (tool of tools; track tool) {
+        <span class="tool-tag">{{ tool }}</span>
+      }
+    </div>
+  </div>
+</section>

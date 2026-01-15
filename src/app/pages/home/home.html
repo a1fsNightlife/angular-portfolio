@@ -1,0 +1,65 @@
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-text animate-fade-in">
+      <p class="greeting">Hello, I'm</p>
+      <h1 class="name">Jakob Nopens</h1>
+      <div class="roles">
+        @for (role of roles; track role; let i = $index) {
+          <span class="role" [class]="'delay-' + (i + 1)">{{ role }}</span>
+          @if (i < roles.length - 1) {
+            <span class="role-divider">|</span>
+          }
+        }
+      </div>
+      <p class="tagline">
+        I craft modern, scalable web applications with a focus on user experience
+        and clean architecture. Let's build something amazing together.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/projects" class="btn-primary">
+          <mat-icon>work</mat-icon>
+          View My Work
+        </a>
+        <a routerLink="/contact" class="btn-secondary">
+          <mat-icon>email</mat-icon>
+          Get In Touch
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual animate-fade-in delay-2">
+      <div class="code-window">
+        <div class="window-header">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+        </div>
+        <div class="code-content">
+          <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = &#123;
+  <span class="property">name</span>: <span class="string">'Jakob Nopens'</span>,
+  <span class="property">skills</span>: [<span class="string">'Angular'</span>, <span class="string">'TypeScript'</span>, <span class="string">'Node.js'</span>],
+  <span class="property">passion</span>: <span class="string">'Building great software'</span>,
+  <span class="property">available</span>: <span class="boolean">true</span>
+&#125;;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </div>
+</section>
+
+<section class="highlights section">
+  <div class="container">
+    <div class="highlights-grid">
+      @for (item of highlights; track item.label; let i = $index) {
+        <div class="highlight-item card" [class]="'delay-' + (i + 1)">
+          <mat-icon class="highlight-icon">{{ item.icon }}</mat-icon>
+          <span class="highlight-label">{{ item.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

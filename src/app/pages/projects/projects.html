@@ -1,0 +1,74 @@
+<section class="projects-hero section">
+  <div class="container">
+    <h1 class="section-title">My Projects</h1>
+    <p class="section-subtitle">A showcase of my recent work and side projects</p>
+  </div>
+</section>
+
+<section class="projects-filter section">
+  <div class="container">
+    <div class="filter-buttons">
+      @for (category of categories; track category) {
+        <button
+          class="filter-btn"
+          [class.active]="selectedCategory() === category"
+          (click)="selectCategory(category)">
+          {{ category }}
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="projects-grid-section">
+  <div class="container">
+    <div class="projects-grid">
+      @for (project of filteredProjects; track project.id) {
+        <article class="project-card card" [class.featured]="project.featured">
+          <div class="project-image">
+            <mat-icon>{{ project.image }}</mat-icon>
+            @if (project.featured) {
+              <span class="featured-badge">Featured</span>
+            }
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-description">{{ project.description }}</p>
+            <div class="project-technologies">
+              @for (tech of project.technologies; track tech) {
+                <span class="tech-tag">{{ tech }}</span>
+              }
+            </div>
+            <div class="project-links">
+              @if (project.liveUrl) {
+                <a [href]="project.liveUrl" target="_blank" rel="noopener" class="project-link">
+                  <mat-icon>launch</mat-icon>
+                  Live Demo
+                </a>
+              }
+              @if (project.githubUrl) {
+                <a [href]="project.githubUrl" target="_blank" rel="noopener" class="project-link">
+                  <mat-icon>code</mat-icon>
+                  Source Code
+                </a>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="cta-section section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Interested in working together?</h2>
+      <p>I'm always open to discussing new projects and opportunities.</p>
+      <a routerLink="/contact" class="btn-primary">
+        <mat-icon>email</mat-icon>
+        Get In Touch
+      </a>
+    </div>
+  </div>
+</section>

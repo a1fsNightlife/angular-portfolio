@@ -1,0 +1,112 @@
+<section class="contact-hero section">
+  <div class="container">
+    <h1 class="section-title">Get In Touch</h1>
+    <p class="section-subtitle">Have a project in mind? Let's work together!</p>
+  </div>
+</section>
+
+<section class="contact-content section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Let's Connect</h2>
+        <p class="contact-intro">
+          I'm always interested in hearing about new projects and opportunities.
+          Whether you have a question or just want to say hi, I'll try my best
+          to get back to you!
+        </p>
+
+        <div class="info-cards">
+          @for (info of contactInfo; track info.label) {
+            <div class="info-card">
+              <mat-icon>{{ info.icon }}</mat-icon>
+              <div class="info-text">
+                <span class="info-label">{{ info.label }}</span>
+                @if (info.link) {
+                  <a [href]="info.link" class="info-value">{{ info.value }}</a>
+                } @else {
+                  <span class="info-value">{{ info.value }}</span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="social-section">
+          <h3>Follow Me</h3>
+          <div class="social-links">
+            @for (social of socialLinks; track social.label) {
+              <a
+                [href]="social.url"
+                target="_blank"
+                rel="noopener"
+                class="social-link"
+                [attr.aria-label]="social.label">
+                <mat-icon>{{ social.icon }}</mat-icon>
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrapper card">
+        <h2>Send a Message</h2>
+        <form class="contact-form" (submit)="onSubmit($event)">
+          <mat-form-field appearance="outline">
+            <mat-label>Your Name</mat-label>
+            <input
+              matInput
+              [value]="formData().name"
+              (input)="updateField('name', $event)"
+              required>
+            <mat-icon matPrefix>person</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Your Email</mat-label>
+            <input
+              matInput
+              type="email"
+              [value]="formData().email"
+              (input)="updateField('email', $event)"
+              required>
+            <mat-icon matPrefix>email</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Subject</mat-label>
+            <input
+              matInput
+              [value]="formData().subject"
+              (input)="updateField('subject', $event)">
+            <mat-icon matPrefix>subject</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Your Message</mat-label>
+            <textarea
+              matInput
+              rows="5"
+              [value]="formData().message"
+              (input)="updateField('message', $event)"
+              required></textarea>
+            <mat-icon matPrefix>message</mat-icon>
+          </mat-form-field>
+
+          <button
+            type="submit"
+            class="btn-primary submit-btn"
+            [disabled]="isSubmitting()">
+            @if (isSubmitting()) {
+              <mat-icon class="spinning">sync</mat-icon>
+              Sending...
+            } @else {
+              <mat-icon>send</mat-icon>
+              Send Message
+            }
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

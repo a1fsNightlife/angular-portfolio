@@ -1,0 +1,84 @@
+<section class="about-hero section">
+  <div class="container">
+    <h1 class="section-title">About Me</h1>
+    <p class="section-subtitle">Get to know the person behind the code</p>
+  </div>
+</section>
+
+<section class="about-intro section">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-image">
+        <div class="image-placeholder">
+          <mat-icon>person</mat-icon>
+        </div>
+      </div>
+      <div class="intro-content">
+        <h2>Hi, I'm Jakob!</h2>
+        <p>
+          I'm a passionate Full-Stack Developer with over 5 years of experience in building
+          modern web applications. My journey in software development started with a curiosity
+          about how things work on the web, and it has evolved into a career that I truly love.
+        </p>
+        <p>
+          I specialize in Angular and TypeScript, but I'm always eager to learn new technologies
+          and frameworks. I believe in writing clean, maintainable code and creating user
+          experiences that make a difference.
+        </p>
+        <p>
+          When I'm not coding, you can find me contributing to open-source projects, exploring
+          new technologies, or enjoying a good video game.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-item">
+          <span class="stat-value">{{ stat.value }}</span>
+          <span class="stat-label">{{ stat.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section section">
+  <div class="container">
+    <h2 class="section-title">My Journey</h2>
+    <p class="section-subtitle">A timeline of my professional experience</p>
+
+    <div class="timeline">
+      @for (item of timeline; track item.year; let i = $index) {
+        <div class="timeline-item" [class.right]="i % 2 !== 0">
+          <div class="timeline-content card">
+            <span class="timeline-year">{{ item.year }}</span>
+            <h3 class="timeline-title">{{ item.title }}</h3>
+            <p class="timeline-company">{{ item.company }}</p>
+            <p class="timeline-description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="interests-section section">
+  <div class="container">
+    <h2 class="section-title">Beyond Code</h2>
+    <p class="section-subtitle">Things I'm passionate about</p>
+
+    <div class="interests-grid">
+      @for (interest of interests; track interest.label) {
+        <div class="interest-item card">
+          <mat-icon>{{ interest.icon }}</mat-icon>
+          <span>{{ interest.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</section>
