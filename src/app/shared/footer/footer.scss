@@ -51,8 +51,20 @@
   color: var(--text-secondary);
   transition: all var(--transition-fast);
 
-  &:hover {
+  &:nth-child(1):hover {
     background: var(--primary-color);
+    box-shadow: var(--glow-primary);
+  }
+  &:nth-child(2):hover {
+    background: var(--pink-color);
+    box-shadow: var(--glow-pink);
+  }
+  &:nth-child(3):hover {
+    background: var(--accent-color);
+    box-shadow: var(--glow-cyan);
+  }
+
+  &:hover {
     color: white;
     transform: translateY(-2px);
   }

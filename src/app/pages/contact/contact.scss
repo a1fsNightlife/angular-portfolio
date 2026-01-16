@@ -48,12 +48,35 @@
   background: var(--background-light);
   border-radius: var(--border-radius);
   border: 1px solid var(--surface-color);
+  transition: all var(--transition-medium);
+
+  &:hover {
+    transform: translateX(4px);
+    border-color: var(--primary-color);
+  }
 
   mat-icon {
     font-size: 28px;
     width: 28px;
     height: 28px;
-    color: var(--primary-color);
+    transition: transform var(--transition-fast);
+  }
+
+  &:hover mat-icon {
+    transform: scale(1.1);
+  }
+
+  &:nth-child(1) {
+    border-left: 3px solid var(--primary-color);
+    mat-icon { color: var(--primary-color); }
+  }
+  &:nth-child(2) {
+    border-left: 3px solid var(--pink-color);
+    mat-icon { color: var(--pink-color); }
+  }
+  &:nth-child(3) {
+    border-left: 3px solid var(--accent-color);
+    mat-icon { color: var(--accent-color); }
   }
 }
 
@@ -107,9 +130,23 @@ a.info-value {
   color: var(--text-secondary);
   transition: all var(--transition-fast);
 
-  &:hover {
+  &:nth-child(1):hover {
     background: var(--primary-color);
     border-color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+  }
+  &:nth-child(2):hover {
+    background: var(--pink-color);
+    border-color: var(--pink-color);
+    box-shadow: var(--glow-pink);
+  }
+  &:nth-child(3):hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: var(--glow-cyan);
+  }
+
+  &:hover {
     color: white;
     transform: translateY(-2px);
   }

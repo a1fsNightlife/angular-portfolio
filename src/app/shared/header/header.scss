@@ -7,6 +7,17 @@
   background: rgba(15, 23, 42, 0.9);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--surface-color);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), var(--pink-color), var(--accent-color), transparent);
+    opacity: 0.5;
+  }
 }
 
 .header-content {
