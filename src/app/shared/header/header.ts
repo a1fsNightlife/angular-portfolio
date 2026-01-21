@@ -1,8 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+
+interface NavLink {
+  label: string;
+  fragment?: string;
+  path?: string;
+}
 
 @Component({
   selector: 'app-header',
@@ -12,13 +18,14 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './header.scss',
 })
 export class Header {
+  private readonly router = inject(Router);
   protected readonly isMenuOpen = signal(false);
 
-  protected readonly navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/skills', label: 'Skills' },
-    { path: '/projects', label: 'Projects' },
+  protected readonly navLinks: NavLink[] = [
+    { fragment: 'hero', label: 'Home' },
+    { fragment: 'about', label: 'About' },
+    { fragment: 'skills', label: 'Skills' },
+    { fragment: 'projects', label: 'Projects' },
     { path: '/contact', label: 'Contact' }
   ];
 
@@ -28,5 +35,26 @@ export class Header {
 
   closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  navigateToSection(link: NavLink): void {
+    this.closeMenu();
+    if (link.fragment) {
+      // If we're on contact page, navigate to home first
+      if (this.router.url !== '/') {
+        this.router.navigate(['/']).then(() => {
+          setTimeout(() => this.scrollToFragment(link.fragment!), 100);
+        });
+      } else {
+        this.scrollToFragment(link.fragment);
+      }
+    }
+  }
+
+  private scrollToFragment(fragment: string): void {
+    const element = document.getElementById(fragment);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

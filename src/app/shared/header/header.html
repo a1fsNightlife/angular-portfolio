@@ -1,18 +1,25 @@
 <header class="header">
   <div class="container header-content">
-    <a routerLink="/" class="logo">
+    <a routerLink="/" class="logo" (click)="navigateToSection({ fragment: 'hero', label: 'Home' })">
       <span class="logo-text">&lt;JN /&gt;</span>
     </a>
 
     <nav class="nav-desktop">
-      @for (link of navLinks; track link.path) {
-        <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-          class="nav-link">
-          {{ link.label }}
-        </a>
+      @for (link of navLinks; track link.label) {
+        @if (link.path) {
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="active"
+            class="nav-link">
+            {{ link.label }}
+          </a>
+        } @else {
+          <a
+            class="nav-link"
+            (click)="navigateToSection(link)">
+            {{ link.label }}
+          </a>
+        }
       }
     </nav>
 
@@ -23,15 +30,22 @@
 
   @if (isMenuOpen()) {
     <nav class="nav-mobile">
-      @for (link of navLinks; track link.path) {
-        <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: link.path === '/' }"
-          class="nav-link-mobile"
-          (click)="closeMenu()">
-          {{ link.label }}
-        </a>
+      @for (link of navLinks; track link.label) {
+        @if (link.path) {
+          <a
+            [routerLink]="link.path"
+            routerLinkActive="active"
+            class="nav-link-mobile"
+            (click)="closeMenu()">
+            {{ link.label }}
+          </a>
+        } @else {
+          <a
+            class="nav-link-mobile"
+            (click)="navigateToSection(link)">
+            {{ link.label }}
+          </a>
+        }
       }
     </nav>
   }

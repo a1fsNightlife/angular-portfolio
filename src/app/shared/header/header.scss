@@ -57,6 +57,7 @@
   padding: 8px 0;
   position: relative;
   transition: color var(--transition-fast);
+  cursor: pointer;
 
   &::after {
     content: '';
@@ -110,6 +111,7 @@
   padding: 16px 0;
   border-bottom: 1px solid var(--surface-color);
   transition: color var(--transition-fast);
+  cursor: pointer;
 
   &:last-child {
     border-bottom: none;

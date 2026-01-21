@@ -53,32 +53,14 @@ describe('App Routes', () => {
       expect(routes).toBeDefined();
     });
 
-    it('should have exactly 6 routes', () => {
-      expect(routes.length).toBe(6);
+    it('should have exactly 3 routes (home, contact, wildcard)', () => {
+      expect(routes.length).toBe(3);
     });
 
     it('should have home route at root path', () => {
       const homeRoute = routes.find(r => r.path === '');
       expect(homeRoute).toBeTruthy();
-      expect(homeRoute?.title).toBe('Home | Portfolio');
-    });
-
-    it('should have about route', () => {
-      const aboutRoute = routes.find(r => r.path === 'about');
-      expect(aboutRoute).toBeTruthy();
-      expect(aboutRoute?.title).toBe('About Me | Portfolio');
-    });
-
-    it('should have skills route', () => {
-      const skillsRoute = routes.find(r => r.path === 'skills');
-      expect(skillsRoute).toBeTruthy();
-      expect(skillsRoute?.title).toBe('Skills | Portfolio');
-    });
-
-    it('should have projects route', () => {
-      const projectsRoute = routes.find(r => r.path === 'projects');
-      expect(projectsRoute).toBeTruthy();
-      expect(projectsRoute?.title).toBe('Projects | Portfolio');
+      expect(homeRoute?.title).toBe('Jakob Nopens | Portfolio');
     });
 
     it('should have contact route', () => {
@@ -141,7 +123,7 @@ describe('App Routes', () => {
   });
 
   describe('Route Paths', () => {
-    const expectedPaths = ['', 'about', 'skills', 'projects', 'contact', '**'];
+    const expectedPaths = ['', 'contact', '**'];
 
     expectedPaths.forEach(path => {
       it(`should have route for path: "${path || '(home)'}"`, () => {
@@ -153,10 +135,7 @@ describe('App Routes', () => {
 
   describe('Route Titles', () => {
     const expectedTitles = [
-      { path: '', title: 'Home | Portfolio' },
-      { path: 'about', title: 'About Me | Portfolio' },
-      { path: 'skills', title: 'Skills | Portfolio' },
-      { path: 'projects', title: 'Projects | Portfolio' },
+      { path: '', title: 'Jakob Nopens | Portfolio' },
       { path: 'contact', title: 'Contact | Portfolio' }
     ];
 

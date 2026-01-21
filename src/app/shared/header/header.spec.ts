@@ -35,28 +35,28 @@ describe('Header', () => {
       expect((component as any).navLinks.length).toBe(5);
     });
 
-    it('should contain Home link with correct path', () => {
+    it('should contain Home link with fragment', () => {
       const homeLink = (component as any).navLinks.find((link: any) => link.label === 'Home');
       expect(homeLink).toBeTruthy();
-      expect(homeLink?.path).toBe('/');
+      expect(homeLink?.fragment).toBe('hero');
     });
 
-    it('should contain About link with correct path', () => {
+    it('should contain About link with fragment', () => {
       const aboutLink = (component as any).navLinks.find((link: any) => link.label === 'About');
       expect(aboutLink).toBeTruthy();
-      expect(aboutLink?.path).toBe('/about');
+      expect(aboutLink?.fragment).toBe('about');
     });
 
-    it('should contain Skills link with correct path', () => {
+    it('should contain Skills link with fragment', () => {
       const skillsLink = (component as any).navLinks.find((link: any) => link.label === 'Skills');
       expect(skillsLink).toBeTruthy();
-      expect(skillsLink?.path).toBe('/skills');
+      expect(skillsLink?.fragment).toBe('skills');
     });
 
-    it('should contain Projects link with correct path', () => {
+    it('should contain Projects link with fragment', () => {
       const projectsLink = (component as any).navLinks.find((link: any) => link.label === 'Projects');
       expect(projectsLink).toBeTruthy();
-      expect(projectsLink?.path).toBe('/projects');
+      expect(projectsLink?.fragment).toBe('projects');
     });
 
     it('should contain Contact link with correct path', () => {
@@ -72,10 +72,11 @@ describe('Header', () => {
       });
     });
 
-    it('should have all navigation links with valid paths', () => {
+    it('should have navigation links with either path or fragment', () => {
       (component as any).navLinks.forEach((link: any) => {
-        expect(link.path).toBeDefined();
-        expect(link.path.startsWith('/')).toBe(true);
+        const hasPath = link.path !== undefined;
+        const hasFragment = link.fragment !== undefined;
+        expect(hasPath || hasFragment).toBe(true);
       });
     });
   });
@@ -144,22 +145,10 @@ describe('Header', () => {
   // ==================== NEGATIVE TESTS ====================
 
   describe('Navigation Links - Negative', () => {
-    it('should not have duplicate paths', () => {
-      const paths = (component as any).navLinks.map((link: any) => link.path);
-      const uniquePaths = new Set(paths);
-      expect(uniquePaths.size).toBe(paths.length);
-    });
-
     it('should not have duplicate labels', () => {
       const labels = (component as any).navLinks.map((link: any) => link.label);
       const uniqueLabels = new Set(labels);
       expect(uniqueLabels.size).toBe(labels.length);
-    });
-
-    it('should not contain any link with empty path', () => {
-      (component as any).navLinks.forEach((link: any) => {
-        expect(link.path).not.toBe('');
-      });
     });
 
     it('should not contain any link with empty label', () => {
@@ -170,6 +159,14 @@ describe('Header', () => {
 
     it('should not have more than 10 navigation links', () => {
       expect((component as any).navLinks.length).toBeLessThanOrEqual(10);
+    });
+
+    it('should not have links without path or fragment', () => {
+      (component as any).navLinks.forEach((link: any) => {
+        const hasPath = link.path !== undefined;
+        const hasFragment = link.fragment !== undefined;
+        expect(hasPath || hasFragment).toBe(true);
+      });
     });
   });
 
