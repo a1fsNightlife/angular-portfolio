@@ -119,7 +119,7 @@ describe('About', () => {
 
   describe('DOM Rendering', () => {
     it('should render about section', () => {
-      const section = fixture.nativeElement.querySelector('section');
+      const section = fixture.nativeElement.querySelector('.about-section');
       expect(section).toBeTruthy();
     });
 

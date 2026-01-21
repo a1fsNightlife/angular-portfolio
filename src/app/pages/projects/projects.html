@@ -1,12 +1,9 @@
-<section class="projects-hero section">
+<div class="projects-section section">
   <div class="container">
-    <h1 class="section-title">My Projects</h1>
+    <h2 class="section-title">My Projects</h2>
     <p class="section-subtitle">A showcase of my recent work and side projects</p>
-  </div>
-</section>
 
-<section class="projects-filter section">
-  <div class="container">
+    <!-- Filter Buttons -->
     <div class="filter-buttons">
       @for (category of categories; track category) {
         <button
@@ -17,14 +14,11 @@
         </button>
       }
     </div>
-  </div>
-</section>
 
-<section class="projects-grid-section">
-  <div class="container">
+    <!-- Projects Grid -->
     <div class="projects-grid">
       @for (project of filteredProjects; track project.id) {
-        <article class="project-card card" [class.featured]="project.featured">
+        <article class="project-card" [class.featured]="project.featured">
           <div class="project-image">
             <mat-icon>{{ project.image }}</mat-icon>
             @if (project.featured) {
@@ -57,18 +51,44 @@
         </article>
       }
     </div>
-  </div>
-</section>
 
-<section class="cta-section section">
-  <div class="container">
-    <div class="cta-content">
-      <h2>Interested in working together?</h2>
-      <p>I'm always open to discussing new projects and opportunities.</p>
-      <a routerLink="/contact" class="btn-primary">
-        <mat-icon>email</mat-icon>
-        Get In Touch
-      </a>
+    <!-- Practice Projects Accordion -->
+    <div class="practice-section">
+      <mat-expansion-panel class="practice-accordion">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>science</mat-icon>
+            Code Playground
+          </mat-panel-title>
+          <mat-panel-description>
+            Practice projects & experiments
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="practice-projects-grid">
+          @for (project of practiceProjects; track project.id) {
+            <article class="practice-project-card">
+              <div class="practice-project-icon">
+                <mat-icon>{{ project.image }}</mat-icon>
+              </div>
+              <div class="practice-project-content">
+                <h4 class="practice-project-title">{{ project.title }}</h4>
+                <p class="practice-project-description">{{ project.description }}</p>
+                <div class="practice-project-technologies">
+                  @for (tech of project.technologies; track tech) {
+                    <span class="tech-tag">{{ tech }}</span>
+                  }
+                </div>
+                @if (project.githubUrl) {
+                  <a [href]="project.githubUrl" target="_blank" rel="noopener" class="project-link">
+                    <mat-icon>code</mat-icon>
+                    View on GitHub
+                  </a>
+                }
+              </div>
+            </article>
+          }
+        </div>
+      </mat-expansion-panel>
     </div>
   </div>
-</section>
+</div>

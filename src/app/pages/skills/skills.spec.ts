@@ -98,8 +98,8 @@ describe('Skills', () => {
       expect((component as any).tools).toBeDefined();
     });
 
-    it('should have exactly 12 tools', () => {
-      expect((component as any).tools.length).toBe(12);
+    it('should have exactly 10 tools', () => {
+      expect((component as any).tools.length).toBe(10);
     });
 
     it('should contain VS Code', () => {

@@ -27,43 +27,40 @@ export class Skills {
       title: 'Frontend',
       icon: 'web',
       skills: [
-        { name: 'Angular', level: 95 },
-        { name: 'TypeScript', level: 90 },
-        { name: 'HTML/CSS', level: 95 },
-        { name: 'RxJS', level: 85 },
-        { name: 'SCSS/Sass', level: 90 }
+        { name: 'Angular', level: 85 },
+        { name: 'TypeScript', level: 85 },
+        { name: 'HTML/CSS', level: 90 },
+        { name: 'Angular Material', level: 80 },
+        { name: 'RxJS', level: 75 }
       ]
     },
     {
       title: 'Backend',
       icon: 'dns',
       skills: [
-        { name: 'Node.js', level: 85 },
-        { name: 'Express.js', level: 80 },
-        { name: 'NestJS', level: 75 },
-        { name: 'REST APIs', level: 90 },
-        { name: 'GraphQL', level: 70 }
+        { name: 'Java', level: 85 },
+        { name: 'Spring Boot', level: 80 },
+        { name: 'Maven', level: 80 },
+        { name: 'REST APIs', level: 85 }
       ]
     },
     {
       title: 'Database',
       icon: 'storage',
       skills: [
-        { name: 'PostgreSQL', level: 80 },
-        { name: 'MongoDB', level: 75 },
-        { name: 'Redis', level: 65 },
-        { name: 'Firebase', level: 70 }
+        { name: 'PostgreSQL', level: 75 },
+        { name: 'MySQL', level: 75 },
+        { name: 'JPA/Hibernate', level: 70 }
       ]
     },
     {
       title: 'DevOps & Tools',
       icon: 'build',
       skills: [
-        { name: 'Git', level: 90 },
-        { name: 'Docker', level: 75 },
-        { name: 'CI/CD', level: 80 },
-        { name: 'AWS', level: 65 },
-        { name: 'Linux', level: 75 }
+        { name: 'Git', level: 85 },
+        { name: 'Docker', level: 70 },
+        { name: 'IntelliJ IDEA', level: 85 },
+        { name: 'VS Code', level: 85 }
       ]
     }
   ];
@@ -78,7 +75,7 @@ export class Skills {
   ];
 
   protected readonly tools = [
-    'VS Code', 'WebStorm', 'Figma', 'Postman', 'Jira', 'Confluence',
-    'Slack', 'GitHub', 'GitLab', 'npm', 'Webpack', 'Jest'
+    'IntelliJ IDEA', 'VS Code', 'Postman', 'GitHub', 'Maven',
+    'npm', 'Angular CLI', 'Git', 'Docker', 'Swagger'
   ];
 }

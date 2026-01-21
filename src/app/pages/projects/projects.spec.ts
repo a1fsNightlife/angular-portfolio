@@ -33,8 +33,8 @@ describe('Projects', () => {
       expect((component as any).categories).toBeDefined();
     });
 
-    it('should have exactly 5 categories', () => {
-      expect((component as any).categories.length).toBe(5);
+    it('should have exactly 3 categories', () => {
+      expect((component as any).categories.length).toBe(3);
     });
 
     it('should have All category', () => {
@@ -43,6 +43,10 @@ describe('Projects', () => {
 
     it('should have Web App category', () => {
       expect((component as any).categories).toContain('Web App');
+    });
+
+    it('should have API category', () => {
+      expect((component as any).categories).toContain('API');
     });
   });
 
@@ -61,12 +65,19 @@ describe('Projects', () => {
       expect((component as any).projects).toBeDefined();
     });
 
-    it('should have exactly 6 projects', () => {
-      expect((component as any).projects.length).toBe(6);
+    it('should have exactly 2 projects', () => {
+      expect((component as any).projects.length).toBe(2);
     });
 
-    it('should have E-Commerce Platform project', () => {
-      const project = (component as any).projects.find((p: any) => p.title === 'E-Commerce Platform');
+    it('should have URLShortener project', () => {
+      const project = (component as any).projects.find((p: any) => p.title === 'URLShortener');
+      expect(project).toBeTruthy();
+      expect(project?.category).toBe('API');
+      expect(project?.featured).toBe(true);
+    });
+
+    it('should have Animal Welfare App project', () => {
+      const project = (component as any).projects.find((p: any) => p.title === 'Animal Welfare App');
       expect(project).toBeTruthy();
       expect(project?.category).toBe('Web App');
       expect(project?.featured).toBe(true);
@@ -95,9 +106,9 @@ describe('Projects', () => {
       expect((component as any).selectedCategory()).toBe('Web App');
     });
 
-    it('should update to Mobile category', () => {
-      component.selectCategory('Mobile');
-      expect((component as any).selectedCategory()).toBe('Mobile');
+    it('should update to API category', () => {
+      component.selectCategory('API');
+      expect((component as any).selectedCategory()).toBe('API');
     });
 
     it('should update back to All category', () => {
@@ -110,22 +121,25 @@ describe('Projects', () => {
   describe('filteredProjects getter', () => {
     it('should return all projects when category is All', () => {
       component.selectCategory('All');
-      expect((component as any).filteredProjects.length).toBe(6);
+      expect((component as any).filteredProjects.length).toBe(2);
     });
 
     it('should return only Web App projects when Web App is selected', () => {
       component.selectCategory('Web App');
       const filtered = (component as any).filteredProjects;
-      expect(filtered.length).toBe(3);
+      expect(filtered.length).toBe(1);
       filtered.forEach((project: any) => {
         expect(project.category).toBe('Web App');
       });
     });
 
-    it('should return only Mobile projects when Mobile is selected', () => {
-      component.selectCategory('Mobile');
+    it('should return only API projects when API is selected', () => {
+      component.selectCategory('API');
       const filtered = (component as any).filteredProjects;
       expect(filtered.length).toBe(1);
+      filtered.forEach((project: any) => {
+        expect(project.category).toBe('API');
+      });
     });
   });
 
@@ -135,9 +149,9 @@ describe('Projects', () => {
       expect(featuredProjects.length).toBeGreaterThan(0);
     });
 
-    it('should have exactly 3 featured projects', () => {
+    it('should have exactly 2 featured projects', () => {
       const featuredProjects = (component as any).projects.filter((p: any) => p.featured);
-      expect(featuredProjects.length).toBe(3);
+      expect(featuredProjects.length).toBe(2);
     });
   });
 
@@ -181,7 +195,7 @@ describe('Projects', () => {
 
   describe('DOM Rendering', () => {
     it('should render projects section', () => {
-      const section = fixture.nativeElement.querySelector('section');
+      const section = fixture.nativeElement.querySelector('.projects-section');
       expect(section).toBeTruthy();
     });
 
