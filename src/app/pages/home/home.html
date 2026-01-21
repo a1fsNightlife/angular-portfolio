@@ -1,4 +1,4 @@
-<section class="hero">
+<section id="hero" class="hero">
   <div class="container hero-content">
     <div class="hero-text animate-fade-in">
       <p class="greeting">Hello, I'm</p>
@@ -12,11 +12,11 @@
         }
       </div>
       <p class="tagline">
-        I craft modern, scalable web applications with a focus on user experience
-        and clean architecture. Let's build something amazing together.
+        I craft modern, scalable web applications with a focus on user experience and clean
+        architecture. Let's build something amazing together.
       </p>
       <div class="hero-actions">
-        <a routerLink="/projects" class="btn-primary">
+        <a href="#projects" class="btn-primary">
           <mat-icon>work</mat-icon>
           View My Work
         </a>
@@ -35,19 +35,16 @@
           <span class="dot green"></span>
         </div>
         <div class="code-content">
+          <!-- Do not reformat! Preformatted lines ahead -->
           <pre><code><span class="keyword">const</span> <span class="variable">developer</span> = &#123;
   <span class="property">name</span>: <span class="string">'Jakob Nopens'</span>,
-  <span class="property">skills</span>: [<span class="string">'Angular'</span>, <span class="string">'TypeScript'</span>, <span class="string">'Node.js'</span>],
-  <span class="property">passion</span>: <span class="string">'Building great software'</span>,
+  <span class="property">skills</span>: [<span class="string">'Angular'</span>, <span class="string">'Java'</span>, <span class="string">'Spring Boot'</span>],
+  <span class="property">projects</span>: [<span class="string">'URLShortener'</span>, <span class="string">'AnimalWelfareApp'</span>],
   <span class="property">available</span>: <span class="boolean">true</span>
 &#125;;</code></pre>
         </div>
       </div>
     </div>
-  </div>
-
-  <div class="scroll-indicator">
-    <mat-icon>keyboard_arrow_down</mat-icon>
   </div>
 </section>
 
@@ -63,3 +60,44 @@
     </div>
   </div>
 </section>
+
+<section id="about" class="home-section home-section--dark">
+  <div class="section-divider"></div>
+  <app-about></app-about>
+</section>
+
+<section id="skills" class="home-section home-section--light">
+  <div class="section-divider section-divider--alt"></div>
+  <app-skills></app-skills>
+</section>
+
+<section id="projects" class="home-section home-section--dark">
+  <div class="section-divider"></div>
+  <app-projects></app-projects>
+</section>
+
+<!-- Scroll Navigation -->
+<div class="scroll-nav">
+  <button
+    class="scroll-nav-btn"
+    (click)="scrollToSection('up')"
+    [class.hidden]="currentSectionIndex() === 0"
+    aria-label="Scroll to previous section">
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </button>
+  <div class="scroll-dots" [attr.data-ripple-key]="rippleKey()">
+    @for (section of sections; track section; let i = $index) {
+      <span
+        class="scroll-dot"
+        [class.active]="currentSectionIndex() === i"
+        [style.animation-delay]="getRippleDelay(i)"></span>
+    }
+  </div>
+  <button
+    class="scroll-nav-btn"
+    (click)="scrollToSection('down')"
+    [class.hidden]="currentSectionIndex() === sections.length - 1"
+    aria-label="Scroll to next section">
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </button>
+</div>

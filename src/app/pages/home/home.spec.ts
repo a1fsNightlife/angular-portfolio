@@ -35,20 +35,16 @@ describe('Home', () => {
       expect((component as any).roles).toBeDefined();
     });
 
-    it('should have exactly 3 roles', () => {
-      expect((component as any).roles.length).toBe(3);
+    it('should have exactly 2 roles', () => {
+      expect((component as any).roles.length).toBe(2);
     });
 
     it('should contain Full-Stack Developer role', () => {
       expect((component as any).roles).toContain('Full-Stack Developer');
     });
 
-    it('should contain Angular Specialist role', () => {
-      expect((component as any).roles).toContain('Angular Specialist');
-    });
-
-    it('should contain Problem Solver role', () => {
-      expect((component as any).roles).toContain('Problem Solver');
+    it('should contain Angular & Spring Boot role', () => {
+      expect((component as any).roles).toContain('Angular & Spring Boot');
     });
 
     it('should have all roles as non-empty strings', () => {
