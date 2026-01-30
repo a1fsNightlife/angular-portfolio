@@ -185,10 +185,16 @@
 
   .mat-expansion-panel-header {
     padding: 16px 20px;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--transition-fast);
 
     &:hover {
-      background: var(--background-dark);
+      background: rgba(99, 102, 241, 0.1) !important;
     }
+  }
+
+  &.mat-expanded .mat-expansion-panel-header {
+    border-bottom: 1px solid var(--background-dark);
   }
 
   mat-panel-title {
@@ -213,7 +219,8 @@
   }
 
   .mat-expansion-panel-body {
-    padding: 20px;
+    padding: 24px 20px;
+    margin-top: 8px;
   }
 }
 
