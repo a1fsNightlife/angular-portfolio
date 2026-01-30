@@ -16,44 +16,34 @@ interface TimelineItem {
   styleUrl: './about.scss',
 })
 export class About {
-  protected readonly stats = [
-    { value: '5+', label: 'Years Experience' },
-    { value: '50+', label: 'Projects Completed' },
-    { value: '30+', label: 'Happy Clients' },
-    { value: '10+', label: 'Technologies' }
-  ];
-
   protected readonly timeline: TimelineItem[] = [
     {
-      year: '2024',
-      title: 'Senior Full-Stack Developer',
-      company: 'Tech Company',
-      description: 'Leading development of enterprise Angular applications with focus on scalability and performance.'
-    },
-    {
-      year: '2022',
-      title: 'Full-Stack Developer',
-      company: 'Digital Agency',
-      description: 'Built custom web solutions for various clients using Angular, Node.js, and cloud technologies.'
-    },
-    {
-      year: '2020',
+      year: '2025',
       title: 'Frontend Developer',
-      company: 'Startup',
-      description: 'Developed responsive web applications and contributed to the company\'s design system.'
+      company: 'Keycon Informations GmbH',
+      description:
+        'Built embedded web applications using Angular as well as implementing modern UI/UX specifications for R+V Versicherung AG.',
     },
     {
-      year: '2019',
-      title: 'Junior Developer',
-      company: 'Software House',
-      description: 'Started professional journey building web applications and learning best practices.'
-    }
+      year: '2023',
+      title: 'Junior Frontend Developer',
+      company: 'Keycon Informations GmbH',
+      description:
+        'Development of Angular based, embedded, standalone applications for Atruvia AG, deepening Frontend knownledge.',
+    },
+    {
+      year: '2021',
+      title: 'Junior Full-Stack Developer',
+      company: 'CompuSafe DataSystems AG',
+      description:
+        'Started learning and deep diving into enterprise software development by building web solutions for Allianz Technology SE using Angular, Spring Boot, and cloud technologies.',
+    },
   ];
 
   protected readonly interests = [
     { icon: 'code', label: 'Open Source' },
     { icon: 'school', label: 'Learning' },
     { icon: 'sports_esports', label: 'Gaming' },
-    { icon: 'music_note', label: 'Music' }
+    { icon: 'music_note', label: 'Music' },
   ];
 }
