@@ -58,7 +58,7 @@ export class Contact {
 
   protected readonly socialLinks = [
     { icon: 'code', label: 'GitHub', url: 'https://github.com/a1fsNightlife' },
-    { icon: 'work', label: 'LinkedIn', url: 'https://linkedin.com' },
+    { icon: 'work', label: 'LinkedIn', url: 'www.linkedin.com/in/jakob-nopens-761375227' },
     { icon: 'alternate_email', label: 'Twitter', url: 'https://twitter.com' },
   ];
 
